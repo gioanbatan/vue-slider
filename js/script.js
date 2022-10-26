@@ -19,6 +19,7 @@ createApp({
     data() {
         return {
             slidePosition: 0,
+            slideTimer: "",
             slides: [
                 {
                     image: 'img/01.jpg',
@@ -52,12 +53,21 @@ createApp({
         prev: function() {
             if (this.slidePosition < 1) {
                 this.slidePosition = this.slides.length -1
-            } else (this.slidePosition--)
+            } else (this.slidePosition--);
         },
         next: function() {
             if (this.slidePosition > this.slides.length - 2) {
                 this.slidePosition = 0
-            } else (this.slidePosition++)
+            } else (this.slidePosition++);
+        },
+        timer: function() {
+            this.slideTimer = setInterval(this.next, 3000);
+        },
+        stopTimer: function() {
+            clearInterval(this.slideTimer);
         }
+    },
+    created: function() {
+        this.timer()
     }
 }).mount("#app");
