@@ -23,21 +23,21 @@
 
                 <div class="item">
                     <!-- Vue dynamic source for img -->
-                    <img :src="slides[0].image" :alt="slides[0].title">
+                    <img :src="slides[slidePosition].image" :alt="slides[slidePosition].title">
                     <div class="text">
-                        <h3>{{ slides[0].title }}</h3>
+                        <h3>{{ slides[slidePosition].title }}</h3>
                         <p>
-                            {{ slides[0].text }}
+                            {{ slides[slidePosition].text }}
                         </p>
                     </div>
                 </div>
 
                 <div class="thumbs">
-                    <div class="prev"></div>
-                    <div class="next"></div>
+                    <div class="prev" @click="prev"></div>
+                    <div class="next" @click="next"></div>
                     <!-- Vue v-for cicle for thumbnails -->
-                    <div v-for="(thumbsElement, index) in slides" class="thumb" :class='index === 0 ? "active" : ""'>
-                        <img :src="thumbsElement.image" :alt="thumbsElement.title"/>
+                    <div v-for="(thumbsElement, index) in slides" class="thumb" :class='index === slidePosition ? "active" : ""'>
+                        <img :src="thumbsElement.image" :alt="thumbsElement.title">
                     </div>
                 </div>
 

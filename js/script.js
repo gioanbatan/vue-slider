@@ -18,6 +18,7 @@ const {createApp} = Vue;
 createApp({
     data() {
         return {
+            slidePosition: 0,
             slides: [
                 {
                     image: 'img/01.jpg',
@@ -45,6 +46,18 @@ createApp({
                     text: 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis.',
                 }
             ]
+        }
+    },
+    methods: {
+        prev: function() {
+            if (this.slidePosition < 1) {
+                this.slidePosition = this.slides.length -1
+            } else (this.slidePosition--)
+        },
+        next: function() {
+            if (this.slidePosition > this.slides.length - 2) {
+                this.slidePosition = 0
+            } else (this.slidePosition++)
         }
     }
 }).mount("#app");
