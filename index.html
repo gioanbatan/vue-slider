@@ -36,7 +36,8 @@
                     <div class="prev" @click="prev"></div>
                     <div class="next" @click="next"></div>
                     <!-- Vue v-for cicle for thumbnails -->
-                    <div v-for="(thumbsElement, index) in slides" class="thumb" :class='index === slidePosition ? "active" : ""'>
+                    <!-- <div v-for="(thumbsElement, index) in slides" @click="slidePosition = [index]" class="thumb" :class='index === slidePosition ? "active" : ""'> -->
+                    <div v-for="(thumbsElement, index) in slides" @click="slidePosition = index" class="thumb" :class='slidePosition === index ? " active" : ""'>
                         <img :src="thumbsElement.image" :alt="thumbsElement.title">
                     </div>
                 </div>
